@@ -1,7 +1,9 @@
+from typing import Callable
 from django.db import models
 from cloudinary.models import CloudinaryField
 from django.contrib.auth.models import User
 from django.db.models.deletion import CASCADE
+from django.core.validators import MaxValueValidator
 # Create your models here.
 class Projects(models.Model):
     name = models.CharField(max_length=100)
@@ -36,5 +38,9 @@ class Profile(models.Model):
         ordering = ['-image']
 
 class Votes(models.Model):
-    
+    design = models.PositiveIntegerField(default=0,validators=[MaxValueValidator(10)])
+    usability = models.PositiveIntegerField(default=0,validators=[MaxValueValidator(10)])
+    content = models.PositiveIntegerField(default=0, validators=[MaxValueValidator(10)])
+    user = models.ForeignKey(User, on_delete=CASCADE)
+    project = models.IntegerField(default=0)
 
