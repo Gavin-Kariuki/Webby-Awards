@@ -30,4 +30,16 @@ def user_profile(request):
         form = UpdateForm()
     return render(request,"user_profile.html", {'form':form, 'profile':wasifu, 'projects':user_projects})
 
+def post(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form = PostForm(request.POST, request.FILES)
+        if form.is_valid():
+            post = form.save(commit = False)
+            post.user = current_user
+            post.save()
+        return redirect("projects")
+    else:
+        form = PostForm()
+    return render(request, "post.html", {'form':form})
 
