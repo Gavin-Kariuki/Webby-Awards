@@ -1,0 +1,59 @@
+{%extends 'base.html'%} {%load bootstrap4%} {% block title %} Registration {% endblock %} {{block.super}} {%block content%}
+
+<div class="container d-flex justify-content-center">
+  <div class="wrap d-flex justify-content-center shadow mt-3">
+    <span class="form-title">
+      <img src="" alt="IMG" />
+    </span>
+
+    <form class="form-validate" method="POST">
+      {% csrf_token %}
+      <div class="form-group mt-5">{%bootstrap_form form %}</div>
+
+      <div class="mt-5">
+        <button type="submit" class="btn btn-warning btn-icon-text">
+          SIGN UP
+        </button>
+      </div>
+
+      <div class="pt-5">
+        <span
+          >Already have an account? <a href="/accounts/login/">Sign In</a></span
+        >
+      </div>
+    </form>
+  </div>
+</div>
+
+{%endblock%}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+  </head>
+
+  <body id="logg">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+          <div class="loggin">
+            <h2>Sign Up</h2>
+            <form class="form-group" action="/accounts/register/" method="POST">
+              {%csrf_token%} {%bootstrap_form form %}
+              <button class="btn btn-default" type="submit" name="button">
+                Register
+              </button>
+              <br />
+              <br />
+              <p>Have an account ? Login <a href="/accounts/login/">here</a></p>
+            </form>
+          </div>
+        </div>
+        <div class="col-md-3"></div>
+      </div>
+    </div>
+    <br /><br />
+  </body>
+</html>
