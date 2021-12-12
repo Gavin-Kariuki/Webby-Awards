@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+{% load cloudinary %}
+
+{% block content %}
+<div class="home">
+    <div class="overly mt-5">
+        <h4 class="text-center mt-5" id="awa">Webby Awwards</h4>
+        <p class="text-center">hehe</p>
+        <button class="btn btn-outline-default" type="button" name="button">Design</button>
+        <button class="btn btn-outline-danger" type="button" name="button">Usability</button>
+        <button class="btn btn-outline-primary" type="button" name="button">Creativity</button>
+    </div>
+</div>
+
+
+<div class="container-fluid mt-5">
+    <div class="px-lg-5">
+        <div class="row">
+            <!-- Gallery item -->
+            {%for project in projects%}
+            <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+                <div class="bg-white rounded shadow-sm">
+                    <a href="/project/{{project.id}}">
+                        <img src="{{project.image.url}}" alt="" class="img-fluid card-img-top">
+                    </a>
+                    <div class="p-4">
+                        <h5> <a href="#" class="text-dark">{{project.name}}</a></h5>
+                        <p class="small text-muted mb-0">{{project.date}}</p>
+                        <div
+                            class="d-flex align-items-center justify-content-between rounded-pill px-3 py-2 mt-4">
+                            <p class="small mb-0"><i class="fa fa-picture-o mr-2"></i><span
+                                    class="font-weight-bold">{{project.user}}</span></p>
+                            <div class="badge badge-primary px-3 rounded-pill font-weight-normal">SOTD</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {%endfor%}
+            <!-- End -->
+        </div>
+    </div>
+</div>
+
+{% endblock %}

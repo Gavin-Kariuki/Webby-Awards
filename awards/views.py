@@ -9,11 +9,11 @@ from .forms import PostForm, CommentForm, RateForm, UpdateForm
 # Create your views here.
 def home_page(request):
     try:
-        mradi = Projects.objects.all()
+        projects = Projects.objects.all()
     except Exception as e:
         raise Http404()
     return render(
-        request, "index.html", {"projects": mradi}
+        request, "index.html", {"projects": projects}
     )  # mradi is the same as project
 
 

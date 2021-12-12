@@ -30,7 +30,7 @@
             <div class="mr-4">
             {% if user.is_authenticated %}
                 <i class="far fa-user"></i>
-                <a style="color:black;padding:10px" href="{% url 'user_profile' %}">
+                <a style="color:black;padding:10px" href="{% url 'profile' %}">
                     {{ user }}
                 </a>
             {% else %}
