@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'awards',
     'cloudinary',
     'bootstrap3',
+    'bootstrap4',
     'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
