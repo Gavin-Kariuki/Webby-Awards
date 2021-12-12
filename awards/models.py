@@ -44,3 +44,8 @@ class Votes(models.Model):
     user = models.ForeignKey(User, on_delete=CASCADE)
     project = models.IntegerField(default=0)
 
+class Comments(models.Model):
+    user = models.ForeignKey(User, on_delete = CASCADE)
+    comment = models.TextField(max_length=200)
+    pro_id = models.IntegerField(default = 0)
+
