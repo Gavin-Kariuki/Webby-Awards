@@ -5,6 +5,9 @@ from django.contrib.auth import logout as django_logout
 from django.contrib.auth.decorators import login_required
 from django.http import Http404, HttpResponseRedirect
 from .forms import PostForm, CommentForm, RateForm, UpdateForm
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from .serializers import ProfileSerializer,  ProjectSerializer
 
 # Create your views here.
 def home_page(request):
@@ -16,7 +19,7 @@ def home_page(request):
         request, "index.html", {"projects": projects}
     )  # mradi is the same as project
 
-
+@login_required(login_url = '/accounts/login/')
 def user_profile(request):
     current_user = request.user
     try:
@@ -41,7 +44,7 @@ def user_profile(request):
         {"form": form, "profile": wasifu, "projects": user_projects},
     )
 
-
+@login_required(login_url = '/accounts/login/')
 def post(request):
     current_user = request.user
     if request.method == "POST":
@@ -172,3 +175,25 @@ def project_detail(request, project_id):
 def logout(request):
     django_logout(request)
     return  HttpResponseRedirect('/')
+
+class ProjectList(APIView):
+    def get(self,request,format=None):
+        all_projects = Projects.objects.all()
+        serializers = ProjectSerializer(all_projects,many=True)
+
+        return Response(serializers.data)
+
+@login_required(login_url='/accounts/login/')
+def apiView(request):
+    current_user = request.user
+    title = "Api"
+    profiles = Profile.objects.filter(user = current_user)[0:1]
+
+    return render(request,'api.html',{"title":title, 'profile':profiles})
+
+class ProfileList(APIView):
+    def get(self,request,format=None):
+        all_profiles = Profile.objects.all()
+        serializers = ProfileSerializer(all_profiles, many=True)
+
+        return Response(serializers.data)
