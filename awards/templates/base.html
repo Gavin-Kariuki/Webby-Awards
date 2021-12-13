@@ -1,5 +1,4 @@
 {% load bootstrap4 %} {% load static %} {% load cloudinary %}
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -13,7 +12,6 @@
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
     />
-    <link rel="stylesheet" href="{%static 'css/mdb.css'%}" />
     <link rel="stylesheet" href="{%static 'css/style.css'%}" />
     <link rel="stylesheet" href="{% static 'css/awards.css' %}" />
     {% endblock %}
@@ -21,8 +19,6 @@
   <body>
     {% include "navbar.html" %} {% block content %} {% endblock %} {% block script %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="{%static 'js/mdb.min.js'%}" type="text/javascript"></script>
-    <script src="{%static 'js/popper.min.js'%}" type="text/javascript"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
     <script src="{%static 'js/main.js'%}" type="text/javascript"></script>
