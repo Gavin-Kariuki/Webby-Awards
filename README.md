@@ -20,7 +20,7 @@
 -->
 <p align="center">
     <!-- Put your logo over here -->
-
+    <img src="static/images/logo_size.jpg" alt="Logo" width="200px">
   </a>
   <h3 align="center">WebbyAwwwards</h3>
   <p align="center">
