@@ -1,0 +1,342 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", Gotham Rounded, sans-serif;
+  background-color: #f4f7f6;
+}
+
+.navbar{
+  height: 10vh;
+}
+
+#submit{
+  padding: 20px;
+  margin-right: 0;
+  margin: 0 !important;
+  color: white;
+  font-weight: 500;
+
+}
+
+#link{
+  width: 10%;
+}
+.image{
+  height: 300px;
+}
+.image img{
+  height: 258px;
+  width: 100%;
+  zoom:102%;
+}
+
+/* img:hover{
+  zoom:101%;
+  transition: 800ms;
+} */
+.single{
+  height: 70vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  box-shadow: none !important;
+  background-color: rgba(0, 0, 0, 0.9) !important;
+}
+.overlay{
+  background-color: rgba(0,0,0,0.5);
+  height: 70vh;
+}
+.overlay:hover{
+  background-color: rgba(0,0,0,0.6);
+  transition: 500ms;
+}
+.overlay:left{
+  transition: 500ms;
+}
+.head{
+  font-weight: 400;
+  font-size: 17px;
+  text-align: center;
+}
+.links{
+  text-align: center;
+  color: black;
+}
+.links a{
+  color: black;
+  padding: 10px;
+  font-weight: 500;
+
+}
+.links a:hover{
+  color: #0008;
+}
+.links a:first-child{
+  text-decoration: underline;
+  text-decoration-style: solid;
+}
+.hed{
+  color: white;
+  text-align: center;
+  font-weight: 800;
+  font-family: cursive;
+  margin-top: 100px;
+}
+.i{
+  text-transform: uppercase;
+  text-align: center;
+  color: white;
+}
+.i b{
+  color:#2bbbad ;
+}
+.design i{
+  color: white;
+}
+.design{
+  margin-top: 30px;
+  text-align: center;
+
+}
+.design a{
+  color: white;
+  font-weight: 500;
+  padding: 24px;
+  border: 1px solid red;
+  border-radius: 80px;
+  border-width: 2.5px;
+}
+.design a:first-child{
+  border-color: #2bbbad;
+  border-width: 2.5px;
+}
+.design .b{
+  border-color: #786;
+  border-width:2.5px;
+}
+
+.btn-outline-default{
+  border-radius: 30px !important;
+}
+.form{
+  opacity: 0.8;
+  display:none ;
+  margin: auto;
+  width: 60%;
+  color: white;
+  border: 2px solid #2bbbad;
+  padding: 20px;
+}
+#alert{
+  display: none;
+}
+#de,#us,#con{
+  position: relative;
+  top: 50px;
+  left: -70px;
+  padding: 0;
+  font-weight: 500;
+  margin: 0;
+}
+strong{
+  color:white;
+}
+.comments{
+  background-color: #FFFFFF;
+}
+/* .dsign{
+  text-align: center;
+} */
+.dsign a{
+  color: white;
+  font-weight: 500;
+  padding: 8px;
+  border: 1px solid red;
+  border-radius: 80px;
+}
+.dsign a:first-child{
+  border-color: #2bbbad;
+}
+.dsign .b{
+  border-color: #786;
+}
+.tt{
+  font-weight: 500;
+  font-size: 20px;
+}
+.ments{
+    opacity: 0.8;
+    border: 1px solid #2bbbad;
+    padding: 5px;
+    margin-top: 30px;
+}
+.images img{
+  height: 300px;
+  width: auto;
+}
+
+
+#title{
+  margin-right: 350px;
+  font-weight: 500;
+
+}
+.login{
+  color: black;
+  font-weight: 500;
+  padding: 5px;
+}
+.login:hover{
+  color:rgba(0,0,0,0.5);
+}
+/* home page*/
+
+.home{
+  background-image: url(../img/home.jpg);
+  height: 60vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+
+}
+.overly{
+    background-color: rgba(0,0,0,0.5);
+    height: 60vh;
+    text-align: center;
+}
+.overly p{
+  color: white;
+  font-weight: 500;
+}
+#awa{
+  text-align: center;
+  color: white;
+  font-weight: 500;
+}
+
+.overly button:hover{
+  background-color: rgba(255,255,255,0.2) !important;
+}
+.overl button:hover{
+  background-color: rgba(255,255,255,0.2) !important;
+  color:#2bbbad !important ;
+  border-color: #2bbbad !important;
+  border-width: thin !important;
+}
+.overl button{
+    border-radius: 30px !important;
+    border-width: thin !important;
+}
+.overly button{
+    border-radius: 30px !important;
+}
+.content{
+  font-family: "apercu",sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  color: #202121;
+  box-shadow: none !important;
+
+}
+.check{
+  padding: 10px;
+}
+.loggin{
+  width: 70%;
+  text-align: center;
+  margin: auto;
+  margin-top: 10vh;
+  border: 1px solid #2bbbad;
+  padding: 20px;
+  color: white;
+  font-weight: 400;
+}
+.loggin h2{
+  font-weight: 500;
+}
+.loggin a{
+  color: #2bbbad;
+}
+.loggin form{
+  opacity: 0.8;
+  color: white;
+
+}
+.loggin button{
+  padding: 7px !important;
+  width: 80%;
+}
+
+#profile{
+  background-color: white !important;
+  box-shadow:none!important;
+  color: #2bbbad;
+  padding:8px;
+}
+.sidePro{
+  height: 550px;
+  color: white;
+  box-shadow: 1px 1px 5px black;
+}
+
+.over{
+    padding: 10px;
+    height: 30vh;
+    background-color: rgba(0,0,0,0.5);
+}
+#user{
+  padding: 20px;
+  text-transform: capitalize;
+  font-weight: 500;
+  font-size: 22px;
+  border: 1px solid #2bbbad;
+  border-radius: 80px;
+}
+.loggi{
+  width: 90%;
+  margin: auto;
+  border: 1px solid #2bbbad;
+  padding: 20px;
+  color: black;
+  font-weight: 400;
+}
+.loggi h2{
+  font-weight: 500;
+}
+.loggi a{
+  color: #2bbbad;
+}
+.loggi form{
+  color: black;
+
+}
+.loggi button{
+  padding: 7px !important;
+  width: 80%;
+  text-align: center;
+}
+
+@media screen and (max-width:360px)  {
+  .overl{
+    display: none;
+  }
+
+}
+
+@media screen and (min-width:1200px) {
+  #area{
+    position: relative;
+    left:580px;
+    top:-80px;
+  }
+}
+#search{
+  display: none;
+}

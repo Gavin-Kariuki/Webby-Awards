@@ -1,0 +1,240 @@
+{%extends 'base.html'%} {% load static %} {% load cloudinary %} {% load bootstrap4 %} {{block.super}} {% block content %} {% for pro in projects %}
+<div style="background-image:url({{ pro.image.url }});" class="single">
+  <div class="overlay mt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 justify-content-center mt-5">
+          <a
+            id="visit"
+            class="btn btn-outline-default bg-default"
+            href="{{ pro.link }}"
+            target="blank"
+            >Visit site</a
+          >
+        </div>
+        <div class="col-md-6" id="comm">
+          <h1 class="hed">{{ pro.name }}</h1>
+          <p class="i">
+            by <b class="b">{{ pro.user }} </b> has a Rating of
+            <strong> {{average}}</strong>
+          </p>
+          <div class="design">
+            <a target="_blank" href="{{ pro.link }}">{{ design }}</a>
+            <i id="de">design</i>
+            <a target="_blank" href="{{ pro.link }}">{{ usability }}</a>
+            <i id="us">usability</i>
+            <a target="_blank" class="b" href="{{ pro.link }}">{{ content }}</a>
+            <i id="con">content</i>
+          </div>
+        </div>
+        <div class="col-md-3 justify-content-center mt-5">
+          {% if user.is_authenticated %}
+
+          <button
+            id="love"
+            class="btn btn-outline-default"
+            type="button"
+            name="button"
+          >
+            Rate
+          </button>
+          {% if user.id not in auth %}
+          <br />
+          <div class="form animated fadeIn">
+            <form
+              id="send"
+              class=""
+              action="/project/{{pro.id}}/"
+              method="post"
+            >
+              {% csrf_token %} {% bootstrap_form form %}
+              <button
+                class="btn btn-outline-default"
+                type="submit"
+                name="button"
+              >
+                Submit
+              </button>
+            </form>
+          </div>
+          {% else %}
+          <p class="alert alert-info">Thank You for Rating This app</p>
+          {% endif %} {% else %}
+          <a href="/registration/login/"
+            ><button
+              class="btn btn-outline-default"
+              type="button"
+              name="button"
+            >
+              Login to rate
+            </button></a
+          >
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+
+<div class="container">
+  <div class="row">
+    {% for project in projects %}
+    <div class="col-md-12 d-flex justify-content-center">
+      <div class="mt-5">
+        <p class="head">{{ project.description }}</p>
+      </div>
+    </div>
+    <div class="col-md-12 justify-content-center">
+      <button class="btn btn-outline-default" type="button" name="button">
+        Design
+      </button>
+      <button class="btn btn-outline-default" type="button" name="button">
+        Fashion
+      </button>
+      <button class="btn btn-outline-default" type="button" name="button">
+        Creativity
+      </button>
+      <button class="btn btn-outline-default" type="button" name="button">
+        Django
+      </button>
+      <button class="btn btn-outline-default" type="button" name="button">
+        Mobile & Apps
+      </button>
+      <button class="btn btn-outline-default" type="button" name="button">
+        Node.js
+      </button>
+      <button class="btn btn-outline-default" type="button" name="button">
+        App Style
+      </button>
+      <button class="btn btn-outline-default" type="button" name="button">
+        Content
+      </button>
+      <button class="btn btn-outline-default" type="button" name="button">
+        Developer
+      </button>
+      <button class="btn btn-outline-default" type="button" name="button">
+        Design
+      </button>
+      <button class="btn btn-outline-default" type="button" name="button">
+        Usability
+      </button>
+      <button class="btn btn-outline-default" type="button" name="button">
+        Creativity
+      </button>
+      <button class="btn btn-outline-default" type="button" name="button">
+        Python
+      </button>
+      <button class="btn btn-outline-default" type="button" name="button">
+        Chart.js
+      </button>
+    </div>
+    {% endfor %}
+  </div>
+
+  <hr class="bg-default" />
+
+  <div class="row">
+    <div class="col-md-12 d-flex justify-content-center">
+      <div class="links">
+        <a href="#shots">Screenshots</a>. <a href="#comm">Jury votes</a>.
+        <a href="#om">Comments</a>
+      </div>
+    </div>
+    <div class="col-md-12">
+      {% for screen in projects %} {% if screen.screen_one or screen.screen_two %}
+      <div class="images d-flex justify-content-center m-5">
+        <img
+          id="shots"
+          class="img-fluid"
+          src="{{ screen.screen_one.url }}"
+          alt=""
+        />
+        <img class="img-fluid" src="{{ screen.screen_two.url }}" alt="" />
+      </div>
+      {% else %} {% endif %} {% endfor %}
+    </div>
+
+    <div class="col-md-12 mt-5">
+      <div class="card comments">
+        <div class="card-header">
+          <h4>Votes Awards {{ all|length }}</h4>
+        </div>
+        <div class="list-group">
+          <ul class="list-group">
+            {% if all %}
+            <table id="comm" class="table">
+              <th>Voters</th>
+              <th>Rating</th>
+              <th>Stars</th>
+              {% for us in all %}
+              <tr>
+                <td>{{ us.user }}</td>
+                <td>
+                  <div class="dsign">
+                    <a href="">{{ us.design }}.0</a>
+                    <a href="">{{ us.usability }}.0</a>
+                    <a class="b" href="">{{ us.content }}.0</a>
+                  </div>
+                </td>
+
+                <td>
+                  <b class="tt">
+                    <i style="color: red" class="far fa-star"></i>
+                    <i style="color: red" class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                  </b>
+                </td>
+              </tr>
+              {% endfor %}
+            </table>
+            {% else %}
+            <li class="list-group-item alert alert-info">No votes Available</li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="ments">
+        <p id="om">comments <i class="far fa-comments"></i></p>
+        <hr />
+        {% if comments %} {% for comment in comments %}
+        <p>
+          <i class="fas fa-quote-left"></i>
+          {{ comment.comment }}
+        </p>
+        <i>by {{ comment.user }}</i>
+        <hr />
+        {% endfor %} {% else %}
+        <p class="alert alert-info">Be the first one to comment</p>
+        {% endif %}
+      </div>
+
+      {% if user.is_authenticated %} {% for j in projects %}
+      <form class="" action="/project/{{j.id}}/" method="post">
+        {% csrf_token %} {% bootstrap_form review %}
+        <button
+          id="area"
+          class="btn btn-outline-default"
+          type="submit"
+          name="button"
+        >
+          Comment
+        </button>
+      </form>
+      {% endfor %} {% else %}
+      <a href="/registration/login/">
+        <button class="btn btn-outline-default" type="submit" name="button">
+          Please sign in first
+        </button>
+      </a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}

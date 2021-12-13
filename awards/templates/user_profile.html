@@ -1,0 +1,149 @@
+{% extends 'base.html' %} {% load cloudinary %} {% load bootstrap4 %}
+{{block.super}} {% block content %}
+
+<div class="container">
+  <div class="row py-5 px-4">
+    <div class="col-md-8 mx-auto mt-5">
+      <!-- Profile widget -->
+      {% if profile %} {% for prof in profile %}
+
+      <div class="bg-white shadow rounded overflow-hidden">
+        <div class="px-4 pt-0 pb-4 cover">
+          <div class="media align-items-end profile-head">
+            <div class="profile mr-3">
+              <img
+                src="{{prof.image.url}}"
+                alt="..."
+                width="130"
+                class="rounded mb-2 img-thumbnail"
+              />
+            </div>
+            <div class="media-body mb-5 text-white">
+              <h4 class="mt-0 mb-0">{{ user }}</h4>
+              <p class="small mb-4">
+                <i class="fas fa-map-marker-alt mr-2"></i>{{ user.email }}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-light p-4 text-center">
+          <p>{{ prof.bio }}</p>
+          <button
+            id="profile"
+            data-toggle="modal"
+            data-target="#modalSubscriptionForm"
+            class="btn btn-default"
+            type="button"
+            name="button"
+          >
+            Update Profile
+          </button>
+          <a class="btn btn-danger" href="/logout/">Logout</a>
+        </div>
+
+        {% endfor %} {% else %} {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt-5">
+  <div class="px-lg-5">
+    {%if projects%}
+    <div class="row">
+      <!-- Gallery item/Project Items -->
+      {% for project in projects %}
+      <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+        <div class="bg-white rounded shadow-sm">
+          <a href="/project/{{project.id}}">
+            <img
+              src="{{project.image.url}}"
+              alt=""
+              class="img-fluid card-img-top"
+            />
+          </a>
+          <div class="p-4">
+            <h5><a href="#" class="text-dark">{{project.name}}</a></h5>
+            <p class="small text-muted mb-0">{{project.date}}</p>
+            <div
+              class="
+                d-flex
+                align-items-center
+                justify-content-between
+                rounded-pill
+                px-3
+                py-2
+                mt-4
+              "
+            >
+              <p class="small mb-0">
+                <i class="fa fa-picture-o mr-2"></i
+                ><span class="font-weight-bold">{{project.user}}</span>
+              </p>
+              <div
+                class="badge badge-primary px-3 rounded-pill font-weight-normal"
+              >
+                SOTD
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      <!-- End -->
+      {% else %}
+      <p class="alert alert-info">
+        You have Not Submitted any Project <br />
+        Get started <a href="{%url 'post'%}">Here</a> To get a star
+      </p>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<div
+  style="color: black"
+  class="modal fade"
+  id="modalSubscriptionForm"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="myModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold" style="color: black">
+          Edit Profile
+        </h4>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body mx-3">
+        <form
+          class=""
+          action="/user/profile/"
+          method="POST"
+          enctype="multipart/form-data"
+        >
+          {%csrf_token%} {%bootstrap_form form%}
+          <div class="modal-footer d-flex justify-content-center">
+            <button type="submit" class="btn btn-default">
+              Update <i class="fas fa-paper-plane-o ml-1"></i>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

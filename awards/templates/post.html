@@ -1,0 +1,25 @@
+{%extends 'base.html'%} {% load cloudinary %} {% load bootstrap4 %}
+{{block.super}} {% block content %}
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-6 mt-5">
+      <div class="loggi">
+        <h2>Submit Your Project</h2>
+        <form
+          class="form-group"
+          action="/project/post/"
+          method="POST"
+          enctype="multipart/form-data"
+        >
+          {%csrf_token%} {%bootstrap_form form%}
+          <button class="btn btn-default" type="submit" name="button">
+            Submit Project
+          </button>
+          <br />
+          <br />
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{%endblock%}
