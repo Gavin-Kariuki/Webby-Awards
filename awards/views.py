@@ -53,7 +53,7 @@ def post(request):
             post = form.save(commit=False)
             post.user = current_user
             post.save()
-        return redirect("projects")
+        return redirect("home_page")
     else:
         form = PostForm()
     return render(request, "post.html", {"form": form})
